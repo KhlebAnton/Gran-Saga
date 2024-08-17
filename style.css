@@ -359,7 +359,7 @@ margin-bottom: 16px;
     position: absolute;
     width: 267px;
     height: 336px;
-    background: url('./img/F5\ .png') 50% / contain no-repeat;
+    background: url('./img/F5.png') 50% / contain no-repeat;
     left: calc(50% - (267px / 2));
     bottom: 75%;
 }
