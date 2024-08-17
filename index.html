@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Gran Saga</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="screen screen-welcome">
+        <div class="welcome-title">
+            <span>Привет!</span>
+
+        </div>
+        <div class="welcome-desc">
+            Добро пожаловать в <br>
+            фантастический мир Gran Saga
+        </div>
+        <div class="line">
+            <svg width="311" height="15" viewBox="0 0 311 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g clip-path="url(#clip0_13_477)">
+                    <g opacity="0.5">
+                        <path d="M0.704023 9L0 7.5L0.704023 6L1.40805 7.5L0.704023 9ZM1.78352 7.2H147V7.8H1.78352V7.2Z"
+                            fill="#6B6E7D" />
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="M155.841 3.75L157.545 2.045L155.5 0L153.455 2.045L155.16 3.75L151.75 7.16L150.046 5.455L148 7.5L150.046 9.546L151.75 7.841L155.16 11.25L153.455 12.954L155.5 15L157.545 12.954L155.841 11.25L159.25 7.84L160.955 9.546L163 7.5L160.955 5.455L159.25 7.159L155.841 3.75Z"
+                            fill="#6B6E7D" />
+                        <path d="M164 7.2H309.216V7.8H164V7.2ZM310.296 9L311 7.5L310.296 6L309.592 7.5L310.296 9Z"
+                            fill="#6B6E7D" />
+                    </g>
+                </g>
+                <defs>
+                    <clipPath id="clip0_13_477">
+                        <rect width="311" height="15" fill="white" />
+                    </clipPath>
+                </defs>
+            </svg>
+        </div>
+        <div class="welcome-text">
+            <p>
+                Здесь ты можешь сделать фото с персонажем Кюи в дополненной реальности
+            </p>
+        </div>
+        <div class="btn-action" ontouchstart onclick="hideScreenWelc(), showPreloader(), startLoad()">
+            Открыть фотозону
+        </div>
+    </div>
+    <div class="screen screen-preloader hidden">
+        <div class="logo">
+
+        </div>
+        <div class="loader">
+            <div class="loader-title">
+                <span>Загрузка приложения <span id="loader-precent">50</span>%</span>
+            </div>
+            <div class="loader-bar">
+                <div class="loader-bar-progress" style="width: 50%;">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="screen instructions hidden">
+        <div class="instruction-item">
+            <div class="instruction-icon cursor"></div>
+            <div class="instruction-wrapper">
+                <div class="instruction-text">
+                    Перемещай камеру <br>
+                    вперед-назад для распознования пола
+                </div>
+            </div>
+        </div>
+        <div class="instruction-item hidden">
+            <div class="instruction-wrapper">
+                <div class="instruction-text">
+                    Размести Кюи
+                </div>
+            </div>
+        </div>
+        <div class="instruction-item hidden">
+            <div class="instruction-icon tap-icon"></div>
+            <div class="instruction-wrapper">
+                <div class="instruction-text">
+                    Зажми Кюи пальцем <br>
+                    и перемести
+                </div>
+            </div>
+        </div>
+        <div class="instruction-item hidden">
+            <div class="instruction-icon turn-icon"></div>
+            <div class="instruction-wrapper">
+                <div class="instruction-text">
+                    Зажми Кюи двумя <br>
+                    пальцами и поверни
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="screen screen-game hidden">
+
+        <div class="game">
+            <div class="game-header">
+                <div class="btn-game refresh" onclick="showInstr(),hideGame(),restartInst()">
+
+                </div>
+            </div>
+            <div class="game-footer">
+                <div class="skin-items">
+                    <div class="skin-item skin-one"></div>
+                    <div class="skin-item skin-two select"></div>
+                    <div class="skin-item skin-three"></div>
+                </div>
+                <div class="btn-shot" onclick="showScreenShot()"></div>
+            </div>
+        </div>
+
+        <div class="screenshot-container hidden">
+            <div class="wrapper screenshot-block">
+                <div class="block">
+                    <div class="screenshot-img" style="background-image: url('./img/test-screenshot.jfif');"></div>
+                    <div class="">
+                        <svg width="100%" height="15" viewBox="0 0 311 15" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g clip-path="url(#clip0_13_477)">
+                                <g opacity="0.5">
+                                    <path d="M0.704023 9L0 7.5L0.704023 6L1.40805 7.5L0.704023 9ZM1.78352 7.2H147V7.8H1.78352V7.2Z"
+                                        fill="#6B6E7D" />
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M155.841 3.75L157.545 2.045L155.5 0L153.455 2.045L155.16 3.75L151.75 7.16L150.046 5.455L148 7.5L150.046 9.546L151.75 7.841L155.16 11.25L153.455 12.954L155.5 15L157.545 12.954L155.841 11.25L159.25 7.84L160.955 9.546L163 7.5L160.955 5.455L159.25 7.159L155.841 3.75Z"
+                                        fill="#6B6E7D" />
+                                    <path d="M164 7.2H309.216V7.8H164V7.2ZM310.296 9L311 7.5L310.296 6L309.592 7.5L310.296 9Z"
+                                        fill="#6B6E7D" />
+                                </g>
+                            </g>
+                            <defs>
+                                <clipPath id="clip0_13_477">
+                                    <rect width="311" height="15" fill="white" />
+                                </clipPath>
+                            </defs>
+                        </svg>
+                    </div>
+                    <div class="btn-action" ontouchstart onclick="hideScreenShot()">
+                        переснять
+                    </div>
+                    <div class="btn-action" ontouchstart onclick="hideShotBlock(),showRegistBlock()">
+                        поделиться
+                    </div>
+                </div>
+                <div class="btn-game close" onclick="hideScreenShot()"></div>
+            </div>
+            <div class="wrapper bg-f5 registrtion-block hidden">
+                <div class="block padding-op-block">
+                    <div class="logo" style="height: 83px;">
+
+                    </div>
+                    <p class="welcome-desc ">
+                        Готовься к великому путешествию
+                    </p>
+                    <div class="">
+                        <svg width="100%" height="15" viewBox="0 0 311 15" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g clip-path="url(#clip0_13_477)">
+                                <g opacity="0.5">
+                                    <path d="M0.704023 9L0 7.5L0.704023 6L1.40805 7.5L0.704023 9ZM1.78352 7.2H147V7.8H1.78352V7.2Z"
+                                        fill="#6B6E7D" />
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M155.841 3.75L157.545 2.045L155.5 0L153.455 2.045L155.16 3.75L151.75 7.16L150.046 5.455L148 7.5L150.046 9.546L151.75 7.841L155.16 11.25L153.455 12.954L155.5 15L157.545 12.954L155.841 11.25L159.25 7.84L160.955 9.546L163 7.5L160.955 5.455L159.25 7.159L155.841 3.75Z"
+                                        fill="#6B6E7D" />
+                                    <path d="M164 7.2H309.216V7.8H164V7.2ZM310.296 9L311 7.5L310.296 6L309.592 7.5L310.296 9Z"
+                                        fill="#6B6E7D" />
+                                </g>
+                            </g>
+                            <defs>
+                                <clipPath id="clip0_13_477">
+                                    <rect width="311" height="15" fill="white" />
+                                </clipPath>
+                            </defs>
+                        </svg>
+                    </div>
+                    <div class="btn-action btn-flex" ontouchstart>
+                        Зарегистрироваться
+                    </div>
+                </div>
+                <div class="btn-game close" onclick="hideScreenShot()"></div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+
+</html>
