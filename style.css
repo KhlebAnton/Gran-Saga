@@ -186,20 +186,59 @@ margin-bottom: 16px;
     justify-content: end;
     height: 100%;
 }
-.instruction-icon.cursor {
-    background: url('./img/cursor.png') 50% / contain no-repeat;
-    width: 233px;
-    height: 88px;
-}
+
 .instruction-icon.tap-icon {
     background: url('./img/point.png') 50% / contain no-repeat;
     width: 155px;
     height: 123px;
+    animation: tapAnim 3s infinite;
+    
+}
+@keyframes tapAnim {
+    0% {
+       transform: scale(1) translateX(0); 
+    }
+    10% {
+        transform: scale(0.8) translateX(0);
+    }
+    30% {
+        transform: scale(0.8) translateX(-20px);
+    }
+    60% {
+        transform: scale(0.8) translateX(20px);
+    }
+    60% {
+        transform: scale(1) translateX(20px);
+    }
+    100% {
+        transform: scale(1) translateX(0); 
+    }
+}
+@keyframes turnAnim {
+    0% {
+       transform: scale(1) ; 
+    }
+    10% {
+        transform: scale(0.8) ;
+    }
+    30% {
+        transform: scale(0.8) rotate(35deg);
+    }
+    60% {
+        transform: scale(0.8) rotate(-35deg);
+    }
+    60% {
+        transform: scale(1) ;
+    }
+    100% {
+        transform: scale(1); 
+    }
 }
 .instruction-icon.turn-icon {
     background: url('./img/turn.png') 50% / contain no-repeat;
     width: 146px;
     height: 155px;
+    animation: turnAnim 3s infinite;
 }
 .instruction-icon {
     position: fixed;
