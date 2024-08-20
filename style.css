@@ -48,7 +48,7 @@ body {
 
 body {
     height: 100vh;
-    background-color: #00000000;
+    background-color: #00000080;
     /*test back*/
 
     font-family: "GothamSSm",sans-serif;
@@ -65,7 +65,7 @@ body {
 
 .screen {
     height: 100%;
-    padding: 44px 0;
+    padding: 44px 24px;
     position: fixed;
     width: 100%;
     transition: opacity .2s;
@@ -83,7 +83,7 @@ body {
     flex-direction: column;
     width: 100%;
     justify-content: end;
-    background: url('./img/bg-kui.png') 50% 100% / cover;
+    background: url('./img/bg-kui.jpg') 50% 100% / cover;
 }
 .screen-preloader {
     display: flex;
@@ -91,7 +91,7 @@ body {
     flex-direction: column;
     width: 100%;
     justify-content: end;
-    background: url('./img/bg-kui-2.png') 50% 100% / cover;
+    background: url('./img/bg-kui-2.jpg') 50% 100% / cover;
 }
 
 .welcome-title {
@@ -201,14 +201,12 @@ margin-bottom: 16px;
     10% {
         transform: scale(0.8) translateX(0);
     }
-    30% {
-        transform: scale(0.8) translateX(-20px);
+    
+    40% {
+        transform: scale(0.8) translateX(-40px);
     }
-    60% {
-        transform: scale(0.8) translateX(20px);
-    }
-    60% {
-        transform: scale(1) translateX(20px);
+    80% {
+        transform: scale(0.8) translateX(0);
     }
     100% {
         transform: scale(1) translateX(0); 
@@ -225,9 +223,9 @@ margin-bottom: 16px;
         transform: scale(0.8) rotate(35deg);
     }
     60% {
-        transform: scale(0.8) rotate(-35deg);
+        transform: scale(0.8) rotate(0);
     }
-    60% {
+    80% {
         transform: scale(1) ;
     }
     100% {
@@ -263,7 +261,7 @@ margin-bottom: 16px;
 .btn-game {
     width: 40px;
     height: 40px;
-    background: url('./img/refresh.png') 50% / contain no-repeat;
+    background: url('./img/refresh.svg') 50% / contain no-repeat;
 }
 .btn-shot {
     width: 72px;
@@ -313,11 +311,13 @@ margin-bottom: 16px;
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: .2s;
 }
 .wrapper {
     max-width: 291px;
     width: 100%;
     position: relative;
+    transition: .2s;
 }
 .block {
     padding: 10px;
@@ -328,6 +328,7 @@ margin-bottom: 16px;
     flex-direction: column;
     align-items: stretch;
     gap: 10px;
+    
 }
 .screenshot-img {
     width: 100%;
@@ -337,7 +338,7 @@ margin-bottom: 16px;
     background-position: 50%;
 }
 .btn-game.close {
-    background: url('./img/close.png') 50% / contain no-repeat;
+    background: url('./img/close.svg') 50% / contain no-repeat;
     position: absolute;
     top: -20px;
     right: -20px;
