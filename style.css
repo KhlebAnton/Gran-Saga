@@ -83,7 +83,7 @@ body {
     flex-direction: column;
     width: 100%;
     justify-content: end;
-    background: url('./img/bg-kui.jpg') 50% 100% / cover;
+    background: url('./img/bg-kui.jpg') 50% 75% / cover;
 }
 .screen-preloader {
     display: flex;
@@ -91,7 +91,7 @@ body {
     flex-direction: column;
     width: 100%;
     justify-content: end;
-    background: url('./img/bg-kui-2.jpg') 50% 100% / cover;
+    background: url('./img/bg-kui-2.jpg') 50% 60% / cover;
 }
 
 .welcome-title {
