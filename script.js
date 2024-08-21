@@ -111,7 +111,8 @@ function hideShotBlock() {
 const screenRegistBlock = document.querySelector('.registrtion-block');
 function showRegistBlock() {
     setTimeout(function(){
-        screenRegistBlock.classList.remove('hidden')
+        screenRegistBlock.classList.remove('hidden');
+        onSoundPopup();
     },2000)
 }
 function hideRegistBlock() {
@@ -231,3 +232,19 @@ function Respawn(){
         sendMessageToApp('respawn')
     },100)
 }
+
+//sound
+
+const soundShot = document.getElementById('audio_shot');
+const soundBtn = document.getElementById('audio_btn');
+const soundPopup = document.getElementById('audio_popup');
+
+function onSoundBtn() {
+    soundBtn.play(); 
+};
+function onSoundShot() {
+    soundShot.play();
+};
+function onSoundPopup() {
+    soundPopup.play();
+};

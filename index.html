@@ -5,11 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Gran Saga</title>
-    <link rel="stylesheet" href="style.css?ver=112444351115">
+    <link rel="stylesheet" href="style.css?ver=1122356351115">
     <script src="jquery-3.6.0.min.js" type="text/javascript"></script>
 </head>
 
 <body>
+    <audio id="audio_shot" src="./sounds/shot.mp3"></audio>
+    <audio id="audio_btn" src="./sounds/btn.mp3"></audio>
+    <audio id="audio_popup" src="./sounds/popup.mp3"></audio>
     <div class="screen screen-welcome">
         <div class="welcome-title">
             <span>Привет!</span>
@@ -44,7 +47,7 @@
                 Здесь ты можешь сделать фото с персонажем Кюи в дополненной реальности
             </p>
         </div>
-        <div class="btn-action" ontouchstart onclick="hideScreenWelc(), showPreloader(), startLoad()">
+        <div class="btn-action" ontouchstart onclick="hideScreenWelc(), showPreloader(), startLoad(), onSoundBtn()">
             Открыть фотозону
         </div>
     </div>
@@ -64,8 +67,9 @@
         </div>
     </div>
     <div class="screen instructions hidden">
-        <div class="instruction-item" id="instruction_Scan">
+        <div class="instruction-item " id="instruction_Scan">
             <div class="instruction-wrapper">
+                <div class="instruction-icon scan-icon"></div>
                 <div class="instruction-text">
                     Перемещай камеру <br>
                     вперед-назад для распознования пола
@@ -103,7 +107,7 @@
 
         <div class="game">
             <div class="game-header">
-                <div class="btn-game refresh" onclick="Respawn()">
+                <div class="btn-game refresh" onclick="Respawn(), onSoundBtn()">
 
                 </div>
             </div>
@@ -113,7 +117,7 @@
                     <div class="skin-item skin-two select" onclick="sendMessageToApp('anim_2')"></div>
                     <div class="skin-item skin-three" onclick="sendMessageToApp('anim_3')"></div>
                 </div>
-                <div class="btn-shot" onclick="sendMessageToApp('Screenshot');/*showScreenShot()*/" style="border-radius:100px" ontouchstart></div>
+                <div class="btn-shot" onclick="onSoundShot(), sendMessageToApp('Screenshot');/*showScreenShot()*/" style="border-radius:100px" ontouchstart></div>
             </div>
         </div>
 
@@ -141,10 +145,10 @@
                             </defs>
                         </svg>
                     </div>
-                    <div class="btn-action" ontouchstart onclick="hideScreenShot()">
+                    <div class="btn-action" ontouchstart onclick="hideScreenShot(), onSoundBtn()">
                         переснять
                     </div>
-                    <div class="btn-action" ontouchstart onclick="hideShotBlock(),showRegistBlock(),sendMessageToApp('share')">
+                    <div class="btn-action" ontouchstart onclick="hideShotBlock(),showRegistBlock(),sendMessageToApp('share'),onSoundBtn()">
                         поделиться
                     </div>
                 </div>
@@ -179,7 +183,7 @@
                         </svg>
                     </div>
                     <!--https://ru.4game.com/gransaga/?utm_source=pr&utm_campaign=aug24&utm_partner=qr-card&utm_agent=mixar&utm_format=msp-->
-                    <div class="btn-action btn-flex" onclick="sendMessageToApp('open_site')">
+                    <div class="btn-action btn-flex" onclick="sendMessageToApp('open_site'), onSoundBtn()">
                         Зарегистрироваться
                     </div>
                 </div>

@@ -186,6 +186,11 @@ margin-bottom: 16px;
     justify-content: end;
     height: 100%;
 }
+.instruction-icon.scan-icon {
+    background: url('./img/instruction.svg') 50% / contain no-repeat;
+    width: 302px;
+    height: 187px;
+}
 
 .instruction-icon.tap-icon {
     background: url('./img/point.png') 50% / contain no-repeat;
