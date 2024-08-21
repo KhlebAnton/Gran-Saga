@@ -110,7 +110,9 @@ function hideShotBlock() {
 
 const screenRegistBlock = document.querySelector('.registrtion-block');
 function showRegistBlock() {
-    screenRegistBlock.classList.remove('hidden')
+    setTimeout(function(){
+        screenRegistBlock.classList.remove('hidden')
+    },2000)
 }
 function hideRegistBlock() {
     screenRegistBlock.classList.add('hidden')
