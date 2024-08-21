@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Gran Saga</title>
     <link rel="stylesheet" href="style.css?ver=112444351115">
+    <script src="jquery-3.6.0.min.js" type="text/javascript"></script>
 </head>
 
 <body>
@@ -56,14 +57,14 @@
                 <span>Загрузка приложения <span id="loader-precent">10</span>%</span>
             </div>
             <div class="loader-bar">
-                <div class="loader-bar-progress" style="width: 10%;">
+                <div class="loader-bar-progress" style="width: 0%;">
 
                 </div>
             </div>
         </div>
     </div>
     <div class="screen instructions hidden">
-        <div class="instruction-item">
+        <div class="instruction-item" id="instruction_Scan">
             <div class="instruction-wrapper">
                 <div class="instruction-text">
                     Перемещай камеру <br>
@@ -71,14 +72,14 @@
                 </div>
             </div>
         </div>
-        <div class="instruction-item hidden">
+        <div class="instruction-item hidden" id="instruction_Tap">
             <div class="instruction-wrapper">
                 <div class="instruction-text">
                     Размести Кюи
                 </div>
             </div>
         </div>
-        <div class="instruction-item hidden">
+        <div class="instruction-item hidden" id="instruction_Move">
             <div class="instruction-icon tap-icon"></div>
             <div class="instruction-wrapper">
                 <div class="instruction-text">
@@ -87,7 +88,7 @@
                 </div>
             </div>
         </div>
-        <div class="instruction-item hidden">
+        <div class="instruction-item hidden"  id="instruction_Rotate">
             <div class="instruction-icon turn-icon"></div>
             <div class="instruction-wrapper">
                 <div class="instruction-text">
@@ -102,17 +103,17 @@
 
         <div class="game">
             <div class="game-header">
-                <div class="btn-game refresh" onclick="showInstr(),hideGame(),restartInst()">
+                <div class="btn-game refresh" onclick="Respawn()">
 
                 </div>
             </div>
             <div class="game-footer">
                 <div class="skin-items">
-                    <div class="skin-item skin-one"></div>
-                    <div class="skin-item skin-two select"></div>
-                    <div class="skin-item skin-three"></div>
+                    <div class="skin-item skin-one" onclick="sendMessageToApp('anim_1')"></div>
+                    <div class="skin-item skin-two select" onclick="sendMessageToApp('anim_2')"></div>
+                    <div class="skin-item skin-three" onclick="sendMessageToApp('anim_3')"></div>
                 </div>
-                <div class="btn-shot" onclick="showScreenShot()"></div>
+                <div class="btn-shot" onclick="sendMessageToApp('Screenshot');/*showScreenShot()*/" style="border-radius:100px" ontouchstart></div>
             </div>
         </div>
 
@@ -143,7 +144,7 @@
                     <div class="btn-action" ontouchstart onclick="hideScreenShot()">
                         переснять
                     </div>
-                    <div class="btn-action" ontouchstart onclick="hideShotBlock(),showRegistBlock()">
+                    <div class="btn-action" ontouchstart onclick="hideShotBlock(),showRegistBlock(),sendMessageToApp('share')">
                         поделиться
                     </div>
                 </div>
@@ -177,7 +178,8 @@
                             </defs>
                         </svg>
                     </div>
-                    <div class="btn-action btn-flex" ontouchstart>
+                    <!--https://ru.4game.com/gransaga/?utm_source=pr&utm_campaign=aug24&utm_partner=qr-card&utm_agent=mixar&utm_format=msp-->
+                    <div class="btn-action btn-flex" onclick="sendMessageToApp('open_site')">
                         Зарегистрироваться
                     </div>
                 </div>

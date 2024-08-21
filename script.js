@@ -1,3 +1,8 @@
+/*document.body.style.height = window.innerHeight + 'px';
+
+window.addEventListener('resize', function() {
+    document.body.style.height = window.innerHeight + 'px';
+});*/
 //screen-welcome
 const screenWelc = document.querySelector('.screen-welcome');
 function showScreenWelc() {
@@ -35,7 +40,8 @@ function setProgress(progress) {
 }
 
 function startLoad() {
-    let count = 10;
+    sendMessageToApp("startLoad")
+    /*let count = 10;
     setInterval(()=> {
         if(count < 100) {
             setProgress(count);
@@ -46,7 +52,7 @@ function startLoad() {
             showInstr()
         }
         
-    },100)
+    },100)*/
 }
 
 ///instructions
@@ -57,7 +63,7 @@ function showInstr() {
 function hideInstr() {
     screenInstr.classList.add('hidden')
 }
-function restartInst() {
+/*function restartInst() {
  instItems[0].classList.remove('hidden')
 }
 const instItems = document.querySelectorAll('.instruction-item');
@@ -71,7 +77,7 @@ instItems.forEach((instr) => {
             showGame();
         }
     })
-});
+});*/
 
 
 ///skin-item 
@@ -108,4 +114,118 @@ function showRegistBlock() {
 }
 function hideRegistBlock() {
     screenRegistBlock.classList.add('hidden')
+}
+
+function sendMessageToApp(msg){
+    window.parent.postMessage(msg, "*");
+}
+window.addEventListener('message', (msg) => {
+    msg = msg.data;
+    console.log("receiveMessage " + msg)
+    if (msg.includes("onContentLoading")) {
+        //$(".btn_start_game.animated").addClass("go")
+        let progress = Math.round((msg.split(" ")[1]));
+        console.log("onContentLoading " + progress)
+        setProgress(progress)
+        //showLoadingProgress(progress)
+        //percentElement.innerText = progress + '%';
+    }
+    if (msg.includes("PhotoDone")) {
+        console.log("PhotoDone")
+        let data = msg.split("PhotoDone ")[1];
+        showScreenShot()
+        $(".screenshot-img").css("background-image", "url("+data+")");
+    }
+
+    if (msg.includes("showWelcome")) {
+        showScreenWelc();
+        hidePreloader();
+    }
+    if (msg.includes("showLoading")) {
+        console.log("showPreloader")
+        showPreloader()
+    }
+    if (msg.includes("hideLoading")) {
+        console.log("hidePreloader")
+        hidePreloader()
+    }
+    if (msg.includes("showInstr")) {
+        console.log("showInstr")
+        showInstr()
+    }
+    if (msg.includes("hideInstr")) {
+        console.log("hideInstr")
+        hideInstr()
+    }
+    if (msg.includes("showInstructionScan")) {
+        console.log("showInstructionScan")
+        showInstruction("Scan")
+    }
+    if (msg.includes("showInstructionMove")) {
+        console.log("showInstructionMove")
+        showInstruction("Move")
+    }
+    if (msg.includes("showInstructionTap")) {
+        console.log("showInstructionTap")
+        showInstruction("Tap")
+    }
+    if (msg.includes("showInstructionRotate")) {
+        console.log("showInstructionRotate2")
+        showInstruction("Rotate")
+    }
+    if (msg.includes("showGame")) {
+        showGame()
+    }
+    if (msg.includes("showError ")) {
+        showError(msg.split("showError ")[1])
+    }
+})
+function showInstruction(type){
+    $(".instruction-item").addClass("hidden")
+    setTimeout(function(){
+        $("#instruction_"+type).removeClass("hidden")
+    },500)
+}
+
+///
+let userAgent = navigator.userAgent || navigator.vendor || window.opera;
+function getOS(){
+    if(isIOS()) {
+        console.log("IOS platform");
+        return "IOS";
+    }
+    if(this.isAndroid()) {
+        console.log("Android platform");
+        return "Android"
+    }
+    if(isIOS() == false && isAndroid() == false){
+        console.log("unknown platform error");
+        return "Desktop";
+    }
+}
+function isIOS() {
+    if (/iPad|iPhone|iPod/.test(navigator.platform)) {
+        return true;
+    } else {
+        return navigator.maxTouchPoints &&
+            navigator.maxTouchPoints > 2 &&
+            /MacIntel/.test(navigator.platform);
+    }
+}
+function isAndroid(){
+    return /android/i.test(userAgent)
+}
+
+/*document.body.addEventListener("click", printMousePos);
+function printMousePos(event) {
+    console.log(123)
+    sendMessageToApp('screenClick ' + event.clientX + ' ' + event.clientY);
+}*/
+
+function Respawn(){
+    showInstr();
+    hideGame();
+    setTimeout(function(){
+        sendMessageToApp('respawn')
+    },100)
 }
