@@ -234,6 +234,8 @@ function Respawn(){
 }
 
 //sound
+const AudioContext = window.AudioContext || window.webkitAudioContext;
+const audioCtx = new AudioContext();
 
 const soundShot = document.getElementById('audio_shot');
 const soundBtn = document.getElementById('audio_btn');
