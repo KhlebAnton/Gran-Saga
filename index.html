@@ -13,6 +13,7 @@
     <audio id="audio_shot" src="./sounds/shot.mp3"></audio>
     <audio id="audio_btn" src="./sounds/btn.wav"></audio>
     <audio id="audio_popup" src="./sounds/popup.mp3"></audio>
+    <audio id="audio_back" src="./sounds/back.mp3" loop="loop"></audio>
     <div class="screen screen-welcome">
         <div class="welcome-title">
             <span>Привет!</span>
@@ -47,7 +48,7 @@
                 Здесь ты можешь сделать фото с персонажем Кюи в дополненной реальности
             </p>
         </div>
-        <div class="btn-action" ontouchstart onclick="hideScreenWelc(), showPreloader(), startLoad(), onSoundBtn()">
+        <div class="btn-action" ontouchstart onclick="hideScreenWelc(), showPreloader(), startLoad(), onSoundBtn(), onSoundBack()">
             Открыть фотозону
         </div>
     </div>
@@ -113,9 +114,9 @@
             </div>
             <div class="game-footer">
                 <div class="skin-items">
-                    <div class="skin-item skin-one" onclick="sendMessageToApp('anim_1')"></div>
+                    <div class="skin-item skin-one" onclick="sendMessageToApp('anim_3')"></div>
                     <div class="skin-item skin-two" onclick="sendMessageToApp('anim_2')"></div>
-                    <div class="skin-item skin-three" onclick="sendMessageToApp('anim_3')"></div>
+                    <div class="skin-item skin-three" onclick="sendMessageToApp('anim_1')"></div>
                 </div>
                 <div class="btn-shot" onclick="onSoundShot(), sendMessageToApp('Screenshot');/*showScreenShot()*/" style="border-radius:100px" ontouchstart></div>
             </div>
