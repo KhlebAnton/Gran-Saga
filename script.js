@@ -240,6 +240,7 @@ const audioCtx = new AudioContext();
 const soundShot = document.getElementById('audio_shot');
 const soundBtn = document.getElementById('audio_btn');
 const soundPopup = document.getElementById('audio_popup');
+const soundBack = document.getElementById('audio_back');
 
 function onSoundBtn() {
     soundBtn.play(); 
@@ -249,4 +250,8 @@ function onSoundShot() {
 };
 function onSoundPopup() {
     soundPopup.play();
+}
+
+function onSoundBack() {
+    soundBack.play();
 };
