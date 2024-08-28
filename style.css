@@ -78,6 +78,7 @@ body {
     margin-bottom: 24px;
 }
 .screen-welcome {
+    z-index:99;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -86,6 +87,7 @@ body {
     background: url('./img/bg-kui.jpg') 50% 75% / cover;
 }
 .screen-preloader {
+    z-index:98;
     display: flex;
     align-items: center;
     flex-direction: column;
