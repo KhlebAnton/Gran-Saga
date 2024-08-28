@@ -83,10 +83,10 @@ instItems.forEach((instr) => {
 ///skin-item 
 const skinItems = document.querySelectorAll('.skin-item');
 skinItems.forEach((skin) => {
- skin.addEventListener('click', () => {
-    skinItems.forEach((skin => skin.classList.remove('select')));
-    skin.classList.add('select')
- })
+    skin.addEventListener('click', () => {
+        skinItems.forEach((skin => skin.classList.remove('select')));
+        skin.classList.add('select')
+    })
 })
 
 ///screenshot-container
@@ -110,16 +110,16 @@ function hideShotBlock() {
 
 const screenRegistBlock = document.querySelector('.registrtion-block');
 function showRegistBlock() {
-    setTimeout(function(){
+    setTimeout(function () {
         screenRegistBlock.classList.remove('hidden');
         onSoundPopup();
-    },2000)
+    }, 2000)
 }
 function hideRegistBlock() {
     screenRegistBlock.classList.add('hidden')
 }
 
-function sendMessageToApp(msg){
+function sendMessageToApp(msg) {
     window.parent.postMessage(msg, "*");
 }
 window.addEventListener('message', (msg) => {
@@ -137,7 +137,7 @@ window.addEventListener('message', (msg) => {
         console.log("PhotoDone")
         let data = msg.split("PhotoDone ")[1];
         showScreenShot()
-        $(".screenshot-img").css("background-image", "url("+data+")");
+        $(".screenshot-img").css("background-image", "url(" + data + ")");
     }
 
     if (msg.includes("showWelcome")) {
@@ -175,6 +175,7 @@ window.addEventListener('message', (msg) => {
     if (msg.includes("showInstructionRotate")) {
         console.log("showInstructionRotate2")
         showInstruction("Rotate")
+        startIconReplace()
     }
     if (msg.includes("showGame")) {
         showGame()
@@ -183,25 +184,25 @@ window.addEventListener('message', (msg) => {
         showError(msg.split("showError ")[1])
     }
 })
-function showInstruction(type){
+function showInstruction(type) {
     $(".instruction-item").addClass("hidden")
-    setTimeout(function(){
-        $("#instruction_"+type).removeClass("hidden")
-    },500)
+    setTimeout(function () {
+        $("#instruction_" + type).removeClass("hidden")
+    }, 500)
 }
 
 ///
 let userAgent = navigator.userAgent || navigator.vendor || window.opera;
-function getOS(){
-    if(isIOS()) {
+function getOS() {
+    if (isIOS()) {
         console.log("IOS platform");
         return "IOS";
     }
-    if(this.isAndroid()) {
+    if (this.isAndroid()) {
         console.log("Android platform");
         return "Android"
     }
-    if(isIOS() == false && isAndroid() == false){
+    if (isIOS() == false && isAndroid() == false) {
         console.log("unknown platform error");
         return "Desktop";
     }
@@ -215,7 +216,7 @@ function isIOS() {
             /MacIntel/.test(navigator.platform);
     }
 }
-function isAndroid(){
+function isAndroid() {
     return /android/i.test(userAgent)
 }
 
@@ -225,12 +226,12 @@ function printMousePos(event) {
     sendMessageToApp('screenClick ' + event.clientX + ' ' + event.clientY);
 }*/
 
-function Respawn(){
+function Respawn() {
     showInstr();
     hideGame();
-    setTimeout(function(){
+    setTimeout(function () {
         sendMessageToApp('respawn')
-    },100)
+    }, 100)
 }
 
 //sound
@@ -243,7 +244,7 @@ const soundPopup = document.getElementById('audio_popup');
 const soundBack = document.getElementById('audio_back');
 
 function onSoundBtn() {
-    soundBtn.play(); 
+    soundBtn.play();
 };
 function onSoundShot() {
     soundShot.play();
@@ -263,34 +264,35 @@ const animation = lottie.loadAnimation({
     loop: true, // зацикливание анимации
     autoplay: true, // автоматический запуск анимации
     path: './img/UI/buy.json' // путь к вашему JSON-файлу с анимацией
-  });
+});
 
-  const animationFlick = lottie.loadAnimation({
+const animationFlick = lottie.loadAnimation({
     container: document.getElementById('lottie-animation-flick'), // контейнер для анимации
     renderer: 'svg', // тип рендерера (может быть 'svg', 'canvas' или 'html')
     loop: true, // зацикливание анимации
     autoplay: true, // автоматический запуск анимации
     path: './img/UI/flick.json' // путь к вашему JSON-файлу с анимацией
-  });
+});
 
-  const animationPinch = lottie.loadAnimation({
+const animationPinch = lottie.loadAnimation({
     container: document.getElementById('lottie-animation-pinch'), // контейнер для анимации
     renderer: 'svg', // тип рендерера (может быть 'svg', 'canvas' или 'html')
     loop: true, // зацикливание анимации
     autoplay: true, // автоматический запуск анимации
     path: './img/UI/pinch.json' // путь к вашему JSON-файлу с анимацией
-  });
+});
 
-  const replaceIcons = document.querySelectorAll('.icon-replace');
-  setInterval(()=> {
-    replaceIcons.forEach((icon)=> {
-        if(icon.classList.contains('hidden')) {
-            icon.classList.remove('hidden')
-        } else {
-            icon.classList.add('hidden')
-        }
-    })
-  },1700);
+const replaceIcons = document.querySelectorAll('.icon-replace');
+function startIconReplace() {
+    setInterval(() => {
+        replaceIcons.forEach((icon) => {
+            if (icon.classList.contains('hidden')) {
+                icon.classList.remove('hidden')
+            } else {
+                icon.classList.add('hidden')
+            }
+        })
+    }, 3200);
+}
 
-  
-  
+
