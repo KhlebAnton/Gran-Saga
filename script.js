@@ -255,3 +255,42 @@ function onSoundPopup() {
 function onSoundBack() {
     soundBack.play();
 };
+
+//lottie 
+const animation = lottie.loadAnimation({
+    container: document.getElementById('lottie-animation-buy'), // контейнер для анимации
+    renderer: 'svg', // тип рендерера (может быть 'svg', 'canvas' или 'html')
+    loop: true, // зацикливание анимации
+    autoplay: true, // автоматический запуск анимации
+    path: './img/UI/buy.json' // путь к вашему JSON-файлу с анимацией
+  });
+
+  const animationFlick = lottie.loadAnimation({
+    container: document.getElementById('lottie-animation-flick'), // контейнер для анимации
+    renderer: 'svg', // тип рендерера (может быть 'svg', 'canvas' или 'html')
+    loop: true, // зацикливание анимации
+    autoplay: true, // автоматический запуск анимации
+    path: './img/UI/flick.json' // путь к вашему JSON-файлу с анимацией
+  });
+
+  const animationPinch = lottie.loadAnimation({
+    container: document.getElementById('lottie-animation-pinch'), // контейнер для анимации
+    renderer: 'svg', // тип рендерера (может быть 'svg', 'canvas' или 'html')
+    loop: true, // зацикливание анимации
+    autoplay: true, // автоматический запуск анимации
+    path: './img/UI/pinch.json' // путь к вашему JSON-файлу с анимацией
+  });
+
+  const replaceIcons = document.querySelectorAll('.icon-replace');
+  setInterval(()=> {
+    replaceIcons.forEach((icon)=> {
+        if(icon.classList.contains('hidden')) {
+            icon.classList.remove('hidden')
+        } else {
+            icon.classList.add('hidden')
+        }
+    })
+  },1700);
+
+  
+  
